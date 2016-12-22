@@ -20,9 +20,12 @@
 
                 len = items.length;
 
-            if(!len)
+            if(!len){
                 $scope.message="Please enter data first";
+                $scope.clazz="error";
+            }
             else{
+                $scope.clazz="ok";
                 if(len > 3)
                     $scope.message="Too much!";
                 else

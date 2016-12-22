@@ -1,16 +1,38 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="NameCalculator">
-<head>
-    <meta charset="UTF-8">
+<!doctype html>
+<html lang="en" ng-app="LunchCheck">
+  <head>
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
-    <title>My first AngularJS App</title>
-</head>
+    <title>Lunch Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .message { font-size: 1.3em; font-weight: bold; }
+    </style>
+  </head>
 <body>
-    <h1>My first AngularJS App</h1>
-    <div ng-controller="NameCalculatorController">
-        <input type="text" ng-model="name" ng-keyup="displayNumeric();">
-        Inside my input is: {{totalValue}}
-    </div>
+   <div class="container" ng-controller="LunchCheckController">
+     <h1>Lunch Checker</h1>
+
+         <div class="form-group">
+             <input
+                 id="lunch-menu"
+                 type="text"
+                 placeholder="list comma separated dishes you usually have for lunch"
+                 class="form-control",
+                 ng-model="values"
+             >
+             <div class="input-info">
+                 * empty items won't considered
+             </div>
+         </div>
+         <div class="form-group">
+             <button class="btn btn-default" ng-click="checkLunch();">Check If Too Much</button>
+         </div>
+         <div class="form-group message">
+           {{message}}
+         </div>
+   </div>
+
 </body>
 </html>

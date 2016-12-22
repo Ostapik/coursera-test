@@ -4,19 +4,31 @@
 (function(){
     'use strict';
 
-    angular.module('NameCalculator', [])
+    angular.module('LunchCheck', [])
+        .controller('LunchCheckController', LunchCheckController);
 
-        .controller('NameCalculatorController', function($scope){
-            $scope.name = "";
-            $scope.totalValue=0;
+    LunchCheckController.$inject = ['$scope'];
 
-            $scope.displayNumeric = function(){
-                var totalNameValue = 0;
-                $scope.totalValue = totalNameValue;
+    function LunchCheckController($scope){
+        $scope.message="";
+        $scope.values="";
+
+        $scope.checkLunch = function(){
+            var items = $scope.values.split(',')
+                .map(function(item){return item.trim()})
+                .filter(function(item){return item}),
+
+                len = items.length;
+
+            if(!len)
+                $scope.message="Please enter data first";
+            else{
+                if(len > 3)
+                    $scope.message="Too much!";
+                else
+                    $scope.message="Enjoy!";
             }
+        }
+    }
 
-            function calculate(str){
-
-            }
-        });
 })();
